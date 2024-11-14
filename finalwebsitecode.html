@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carbon Footprint Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .slider-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            margin-bottom: 10px;
+        }
+        .slider {
+            width: 80%;
+        }
+        .label {
+            font-size: 16px;
+        }
+        .output {
+            font-weight: bold;
+        }
+        .slider-value {
+            position: absolute;
+            top: -25px;
+            font-size: 16px;
+            text-align: center;
+            transition: 0.1s;
+        }
+    </style>
+</head>
+<body>
+    <h1>Carbon Footprint Calculator</h1>
+
+    <div class="section">
+        <h2>Mode of Transport</h2>
+        <div class="slider-container">
+            <label for="carDistance" class="label">Car (km): </label>
+            <input type="range" id="carDistance" class="slider" min="0" max="500" step="1" value="0">
+            <span id="carValue" class="slider-value" style="left: 0%;">0 km</span>
+            <span id="carMax">500 km</span>
+        </div>
+
+        <div class="slider-container">
+            <label for="electricCarDistance" class="label">Electric Car (km): </label>
+            <input type="range" id="electricCarDistance" class="slider" min="0" max="500" step="1" value="0">
+            <span id="electricCarValue" class="slider-value" style="left: 0%;">0 km</span>
+            <span id="electricCarMax">500 km</span>
+        </div>
+
+        <div class="slider-container">
+            <label for="busDistance" class="label">Bus (km): </label>
+            <input type="range" id="busDistance" class="slider" min="0" max="500" step="1" value="0">
+            <span id="busValue" class="slider-value" style="left: 0%;">0 km</span>
+            <span id="busMax">500 km</span>
+        </div>
+
+        <div class="slider-container">
+            <label for="trainDistance" class="label">Train (km): </label>
+            <input type="range" id="trainDistance" class="slider" min="0" max="500" step="1" value="0">
+            <span id="trainValue" class="slider-value" style="left: 0%;">0 km</span>
+            <span id="trainMax">500 km</span>
+        </div>
+
+        <div class="slider-container">
+            <label for="planeDistance" class="label">Plane (km): </label>
+            <input type="range" id="planeDistance" class="slider" min="0" max="2000" step="1" value="0">
+            <span id="planeValue" class="slider-value" style="left: 0%;">0 km</span>
+            <span id="planeMax">2000 km</span>
+        </div>
+
+        <div class="slider-container">
+            <label for="bikeDistance" class="label">Bike (km): </label>
+            <input type="range" id="bikeDistance" class="slider" min="0" max="100" step="1" value="0">
+            <span id="bikeValue" class="slider-value" style="left: 0%;">0 km</span>
+            <span id="bikeMax">100 km</span>
+        </div>
+
+        <div class="slider-container">
+            <label for="walkDistance" class="label">Walk (km): </label>
+            <input type="range" id="walkDistance" class="slider" min="0" max="50" step="1" value="0">
+            <span id="walkValue" class="slider-value" style="left: 0%;">0 km</span>
+            <span id="walkMax">50 km</span>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Diet</h2>
+        <div class="slider-container">
+            <label for="meat" class="label">Meat (grams): </label>
+            <input type="range" id="meat" class="slider" min="0" max="1000" step="1" value="0">
+            <span id="meatValue" class="slider-value" style="left: 0%;">0 g</span>
+            <span id="meatMax">1000 g</span>
+        </div>
+
+        <div class="slider-container">
+            <label for="dairy" class="label">Dairy (grams): </label>
+            <input type="range" id="dairy" class="slider" min="0" max="1000" step="1" value="0">
+            <span id="dairyValue" class="slider-value" style="left: 0%;">0 g</span>
+            <span id="dairyMax">1000 g</span>
+        </div>
+
+        <div class="slider-container">
+            <label for="grains" class="label">Grains (grams): </label>
+            <input type="range" id="grains" class="slider" min="0" max="1000" step="1" value="0">
+            <span id="grainsValue" class="slider-value" style="left: 0%;">0 g</span>
+            <span id="grainsMax">1000 g</span>
+        </div>
+
+        <div class="slider-container">
+            <label for="fruitsVegetables" class="label">Fruits & Vegetables (grams): </label>
+            <input type="range" id="fruitsVegetables" class="slider" min="0" max="1000" step="1" value="0">
+            <span id="fruitsVegetablesValue" class="slider-value" style="left: 0%;">0 g</span>
+            <span id="fruitsVegetablesMax">1000 g</span>
+        </div>
+
+        <div class="slider-container">
+            <label for="processedFoods" class="label">Processed Foods (grams): </label>
+            <input type="range" id="processedFoods" class="slider" min="0" max="1000" step="1" value="0">
+            <span id="processedFoodsValue" class="slider-value" style="left: 0%;">0 g</span>
+            <span id="processedFoodsMax">1000 g</span>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Water Usage</h2>
+        <div class="slider-container">
+            <label for="waterGlasses" class="label">Glasses of Water: </label>
+            <input type="range" id="waterGlasses" class="slider" min="0" max="50" step="1" value="0">
+            <span id="waterGlassesValue" class="slider-value" style="left: 0%;">0</span>
+            <span id="waterGlassesMax">50</span>
+        </div>
+
+        <div class="slider-container">
+            <label for="showerCount" class="label">Showers: </label>
+            <input type="range" id="showerCount" class="slider" min="0" max="10" step="1" value="0">
+            <span id="showerValue" class="slider-value" style="left: 0%;">0</span>
+            <span id="showerMax">10</span>
+        </div>
+
+        <div class="slider-container">
+            <label for="bathCount" class="label">Baths: </label>
+            <input type="range" id="bathCount" class="slider" min="0" max="10" step="1" value="0">
+            <span id="bathValue" class="slider-value" style="left: 0%;">0</span>
+            <span id="bathMax">10</span>
+        </div>
+
+        <div class="slider-container">
+            <label for="dishwasherCount" class="label">Dishwasher Cycles: </label>
+            <input type="range" id="dishwasherCount" class="slider" min="0" max="5" step="1" value="0">
+            <span id="dishwasherValue" class="slider-value" style="left: 0%;">0</span>
+            <span id="dishwasherMax">5</span>
+        </div>
+
+        <div class="slider-container">
+            <label for="laundryCount" class="label">Laundry Cycles: </label>
+            <input type="range" id="laundryCount" class="slider" min="0" max="5" step="1" value="0">
+            <span id="laundryValue" class="slider-value" style="left: 0%;">0</span>
+            <span id="laundryMax">5</span>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Waste</h2>
+        <div class="slider-container">
+            <label for="garbageBags" class="label">Garbage Bags: </label>
+            <input type="range" id="garbageBags" class="slider" min="0" max="10" step="1" value="0">
+            <span id="garbageBagsValue" class="slider-value" style="left: 0%;">0</span>
+            <span id="garbageBagsMax">10</span>
+        </div>
+    </div>
+
+    <script>
+        // Update slider value display
+        function updateSliderValue(sliderId, valueId) {
+            const slider = document.getElementById(sliderId);
+            const valueDisplay = document.getElementById(valueId);
+            const value = slider.value;
+            const max = slider.max;
+            const percentage = (value / max) * 100;
+            valueDisplay.textContent = value + ' ' + slider.dataset.unit;
+            valueDisplay.style.left = `calc(${percentage}% - 20px)`; // Center the value over the slider thumb
+        }
+
+        // Add event listeners for each slider
+        document.getElementById('carDistance').addEventListener('input', function () {
+            updateSliderValue('carDistance', 'carValue');
+        });
+        document.getElementById('electricCarDistance').addEventListener('input', function () {
+            updateSliderValue('electricCarDistance', 'electricCarValue');
+        });
+        document.getElementById('busDistance').addEventListener('input', function () {
+            updateSliderValue('busDistance', 'busValue');
+        });
+        document.getElementById('trainDistance').addEventListener('input', function () {
+            updateSliderValue('trainDistance', 'trainValue');
+        });
+        document.getElementById('planeDistance').addEventListener('input', function () {
+            updateSliderValue('planeDistance', 'planeValue');
+        });
+        document.getElementById('bikeDistance').addEventListener('input', function () {
+            updateSliderValue('bikeDistance', 'bikeValue');
+        });
+        document.getElementById('walkDistance').addEventListener('input', function () {
+            updateSliderValue('walkDistance', 'walkValue');
+        });
+
+        document.getElementById('meat').addEventListener('input', function () {
+            updateSliderValue('meat', 'meatValue');
+        });
+        document.getElementById('dairy').addEventListener('input', function () {
+            updateSliderValue('dairy', 'dairyValue');
+        });
+        document.getElementById('grains').addEventListener('input', function () {
+            updateSliderValue('grains', 'grainsValue');
+        });
+        document.getElementById('fruitsVegetables').addEventListener('input', function () {
+            updateSliderValue('fruitsVegetables', 'fruitsVegetablesValue');
+        });
+        document.getElementById('processedFoods').addEventListener('input', function () {
+            updateSliderValue('processedFoods', 'processedFoodsValue');
+        });
+
+        document.getElementById('waterGlasses').addEventListener('input', function () {
+            updateSliderValue('waterGlasses', 'waterGlassesValue');
+        });
+        document.getElementById('showerCount').addEventListener('input', function () {
+            updateSliderValue('showerCount', 'showerValue');
+        });
+        document.getElementById('bathCount').addEventListener('input', function () {
+            updateSliderValue('bathCount', 'bathValue');
+        });
+        document.getElementById('dishwasherCount').addEventListener('input', function () {
+            updateSliderValue('dishwasherCount', 'dishwasherValue');
+        });
+        document.getElementById('laundryCount').addEventListener('input', function () {
+            updateSliderValue('laundryCount', 'laundryValue');
+        });
+
+        document.getElementById('garbageBags').addEventListener('input', function () {
+            updateSliderValue('garbageBags', 'garbageBagsValue');
+        });
+
+        // Add data-unit attributes to sliders
+        document.getElementById('carDistance').dataset.unit = 'km';
+        document.getElementById('electricCarDistance').dataset.unit = 'km';
+        document.getElementById('busDistance').dataset.unit = 'km';
+        document.getElementById('trainDistance').dataset.unit = 'km';
+        document.getElementById('planeDistance').dataset.unit = 'km';
+        document.getElementById('bikeDistance').dataset.unit = 'km';
+        document.getElementById('walkDistance').dataset.unit = 'km';
+        document.getElementById('meat').dataset.unit = 'g';
+        document.getElementById('dairy').dataset.unit = 'g';
+        document.getElementById('grains').dataset.unit = 'g';
+        document.getElementById('fruitsVegetables').dataset.unit = 'g';
+        document.getElementById('processedFoods').dataset.unit = 'g';
+        document.getElementById('waterGlasses').dataset.unit = '';
+        document.getElementById('showerCount').dataset.unit = '';
+        document.getElementById('bathCount').dataset.unit = '';
+        document.getElementById('dishwasherCount').dataset.unit = '';
+        document.getElementById('laundryCount').dataset.unit = '';
+        document.getElementById('garbageBags').dataset.unit = '';
+    </script>
+</body>
+</html>
